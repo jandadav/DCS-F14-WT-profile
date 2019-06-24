@@ -44,16 +44,136 @@ local diff = {
 			},
 			["name"] = "Wing Sweep Bomb Mode",
 		},
-		["d3041pnilunilcd21vd0vpnilvunil"] = {
+		["d3037pnilunilcd21vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "3",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Autopilot Vector ACL",
+		},
+		["d3037pnilunilcd21vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "1",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Autopilot Vector Off",
+		},
+		["d3037pnilunilcd21vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "2",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Autopilot Vector VEC/PCD",
+		},
+		["d3038pnilunilcd21vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "4",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Altitude Hold Off",
+		},
+		["d3038pnilunilcd21vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "5",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Altitude Hold On",
+		},
+		["d3039pnilunilcd21vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "8",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Heading Hold GT",
+		},
+		["d3039pnilunilcd21vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "6",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Heading Hold Off",
+		},
+		["d3039pnilunilcd21vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "7",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Heading Hold On",
+		},
+		["d3040pnilunilcd21vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "A",
+					["reformers"] = {
+						[1] = "LAlt",
+						[2] = "LCtrl",
+					},
+				},
+			},
+			["name"] = "Autopilot Off",
+		},
+		["d3040pnilunilcd21vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "A",
 					["reformers"] = {
 						[1] = "LCtrl",
+						[2] = "LShift",
 					},
 				},
 			},
-			["name"] = "Autopilot toggle",
+			["name"] = "Autopilot On",
+		},
+		["d3051pnilunilcd19vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "E",
+					["reformers"] = {
+						[1] = "LAlt",
+					},
+				},
+			},
+			["name"] = "Crank Right Engine",
 		},
 		["d3058pnilu3058cd22vd1vpnilvu0"] = {
 			["added"] = {
@@ -221,6 +341,36 @@ local diff = {
 				},
 			},
 			["name"] = "Target designate down / VSL LO",
+		},
+		["d3385pnilu3385cd2vd1vpnilvu0"] = {
+			["name"] = "Mic Button UHF1 (ARC-159)",
+			["removed"] = {
+				[1] = {
+					["key"] = "\\",
+					["reformers"] = {
+						[1] = "RAlt",
+					},
+				},
+			},
+		},
+		["d3386pnilu3386cd2vd1vpnilvu0"] = {
+			["name"] = "Mic Button UHF2 (ARC-182)",
+			["removed"] = {
+				[1] = {
+					["key"] = "\\",
+					["reformers"] = {
+						[1] = "RCtrl",
+					},
+				},
+			},
+		},
+		["d3641pnilunilcd11vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "L",
+				},
+			},
+			["name"] = "Exterior Lights Master Switch Toggle",
 		},
 		["dnilp2019u2019cdnilvdnilvp-1vu0"] = {
 			["added"] = {

@@ -1,0 +1,1 @@
+copy /y "C:\Games\WT_profiles\Warthog F14\Combined F-14 0.1.tmc" "Combined F-14 0.1.tmc"
