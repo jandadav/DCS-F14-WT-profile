@@ -61,10 +61,11 @@ MapAxis(&Throttle, SCY, DX_YROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
 SetSCurve(&Throttle, SCY, 0, 0, 0, 0, 0);
 
 //Slew click
-MapKeyIO(&Throttle,SC,MOUSE_LEFT,USB[0x5D]); //mouse click, usb code 'num5' for trackir center
+MapKey(&Throttle,SC,DX32); // DX32 vr zoom
 
 //Free assign to throttle friction lever in DCS
 MapAxis(&Throttle, THR_FC, DX_SLIDER_AXIS);
+
 
 printf("   \xa");
 printf(" --------[ Esri F-14 Profile 0.1 Early Access ]-------- \xa");
@@ -83,10 +84,10 @@ MapKeyIO(&Joystick,S2,R_CTL+USB[0x2C],R_ALT+USB[0x2C]); //CAGE/SEAM usb 'SPC',St
 MapKeyIO(&Joystick,S3,0,USB[0x11]); //FREE, Autopilot Reference / Nosewheel Steering Toggle usb code 'n'
 
 //trim
-MapKeyIO(&Joystick,H1U,USB[0x60],R_CTL+USB[0x33]); // , view up usb code 'num8', trim usb code ';'
-MapKeyIO(&Joystick,H1D,USB[0x5A],R_CTL+USB[0x37]); // , view down usb code 'num2', trim usb code '.'
-MapKeyIO(&Joystick,H1L,USB[0x5C],R_CTL+USB[0x36]); // , view left usb code 'num4', trim usb code ','
-MapKeyIO(&Joystick,H1R,USB[0x5E],R_CTL+USB[0x38]); // , view right usb code 'num6', trim usb code '/'
+MapKeyIO(&Joystick,H1U,REXEC(0,100,"ActKey(KEYON+PULSE+L_CTL+L_ALT+USB[0x42]);"),R_CTL+USB[0x33]); // F13 + AHK mouse wheel up , trim usb code ';'
+MapKeyIO(&Joystick,H1D,REXEC(0,100,"ActKey(KEYON+PULSE+L_CTL+L_ALT+USB[0x43]);"),R_CTL+USB[0x37]); // F14 + AHK mouse wheel down , trim usb code '.'
+MapKeyIO(&Joystick,H1L,L_CTL+L_ALT+USB[0x44],R_CTL+USB[0x36]); // F15 + AHK mouse left , trim usb code ','
+MapKeyIO(&Joystick,H1R,L_CTL+L_ALT+USB[0x45],R_CTL+USB[0x38]); // F16 + AHK mouse right , trim usb code '/'
 
 //tms weapons selecting
 MapKeyIO(&Joystick,H2U,USB[0x54],R_ALT+USB[0x25]); //usb code '*' zoom -, Weapon Selector UP usb code '8'
@@ -103,8 +104,13 @@ MapKeyIO(&Joystick,H3R,0,R_ALT+USB[0x38]); //FREE, Target Designate FWD usb '/'
 //cms
 MapKeyIO(&Joystick,H4U,0,R_SHIFT+USB[0x33]); //FREE, DLC Thumb Fwd usb ';'
 MapKeyIO(&Joystick,H4D,0,R_SHIFT+USB[0x37]); //FREE, DLC Thumb Fwd aft '.'
-MapKeyIO(&Joystick,H4L,0,0); //FREE, FREE
-MapKeyIO(&Joystick,H4R,0,0); //FREE, FREE
+//MapKeyIO(&Joystick,H4L,0,0); //FREE, FREE
+//MapKeyIO(&Joystick,H4R,0,0); //FREE, FREE
+MapKey(&Joystick,H4L,SEQ(
+    EXEC("SetSCurve(&Joystick, JOYX, 0, 10, 0, 0, -2);SetSCurve(&Joystick, JOYY, 0, 10, 0, 0, -2);"),
+    EXEC("SetSCurve(&Joystick, JOYX, 0, 10, 0, 0, 0);SetSCurve(&Joystick, JOYY, 0, 10, 0, 0, 0);")
+)); //TEMP switching between joystick full swing and reduced swing for aerial refueling
+
 MapKeyIO(&Joystick,H4P,TEMPO(USB[0x43],PULSE+USB[0x29],500),TEMPO(R_SHIFT+USB[0x38],PULSE+USB[0x48],500)); //usb code 'F10' map -LONG PRESS: Escape,  DLC toggle usb '/' -LONG PRESS: Pause
 
 
@@ -151,8 +157,30 @@ MapKeyIO(&Throttle,CHF,TEMPO(L_SHIFT+USB[0x21],0,500),TEMPO(L_SHIFT+USB[0x20],0,
 MapKeyIO(&Throttle,LTB,REXEC(0, 90, "ActKey(KEYON+Eject);"),L_ALT+USB[0x26]); //Ejection script and BACKLIGHT BLINK usb code 'e', PLM button usb code '9'
 
 //Coolie
-MapKeyIO(&Throttle,CSU,TEMPO(PULSE+USB[0x3A],AXIS(MOUSE_Z_AXIS, 2, 100),500),PULSE+USB[0x2F]);//view cockpit usb code 'F1' -LONG PRESS:SCROLLWHEEL UP, Planchette  previous usb code '[' -LONG PRESS: FREE
-MapKeyIO(&Throttle,CSD,TEMPO(PULSE+USB[0x3B],AXIS(MOUSE_Z_AXIS, -2, 100),500),PULSE+USB[0x30]);//view external usb code 'F2' -LONG PRESS:SCROLLWHEEL DOWN, Planchette  next usb code ']' -LONG PRESS: FREE
+MapKeyIO(&Throttle,CSU,
+    TEMPO(
+        PULSE+USB[0x3A],
+        AXIS(MOUSE_Z_AXIS, 2, 100),
+        500
+    ),
+    TEMPO(
+        PULSE+USB[0x2F],
+        REXEC(0,100,"ActKey(KEYON+PULSE+USB[0x2F]);"),
+        500
+    )
+);//view cockpit usb code 'F1' -LONG PRESS:SCROLLWHEEL UP, Planchette  previous usb code '[' -LONG PRESS: repeat [
+MapKeyIO(&Throttle,CSD,
+    TEMPO(
+        PULSE+USB[0x3B],
+        AXIS(MOUSE_Z_AXIS, -2, 100),
+        500
+    ),
+    TEMPO(
+        PULSE+USB[0x30],
+        REXEC(0,100,"ActKey(KEYON+PULSE+USB[0x30]);"),
+        500
+    )
+);//view external usb code 'F2' -LONG PRESS:SCROLLWHEEL DOWN, Planchette  next usb code ']' -LONG PRESS: repeat ]
 MapKeyIO(&Throttle,CSL,PULSE+USB[0x3C],CHAIN(R_SHIFT+USB[0x08],R_SHIFT+USB[0x34],R_SHIFT+USB[0x33],R_SHIFT+USB[0x30])); //view flyby usb code 'F3', MDI-MPCD LIGHT + usb code 'e' ''' ';' ']'
 MapKeyIO(&Throttle,CSR,PULSE+USB[0x3D],PULSE+R_SHIFT+USB[0x0E]); //view arcade usb code 'F4',Planchette  on/off usb code 'k'
 
